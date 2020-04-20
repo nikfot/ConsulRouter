@@ -1,4 +1,5 @@
 package consulcalls
+<<<<<<< HEAD
 
 import (
 	"fmt"
@@ -46,3 +47,5 @@ func RouteToConsul(req *http.Request) (res string) {
 
 	return w
 }
+=======
+>>>>>>> Initial Commit

@@ -1,4 +1,5 @@
 package consulcalls
+<<<<<<< HEAD
 
 import "net/http"
 
@@ -35,3 +36,5 @@ type ForwardRequest struct {
 type ForwardResponse struct {
 	Response
 }
+=======
+>>>>>>> Initial Commit

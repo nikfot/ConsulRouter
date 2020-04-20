@@ -1,6 +1,7 @@
 package webserver
 
 import (
+<<<<<<< HEAD
 	"log"
 	"net/http"
 	"os"
@@ -30,5 +31,13 @@ func LoadEndpoints() {
 	http.HandleFunc("/readiness", health.ReadinessGet)
 	http.HandleFunc("/version", health.GetVersion)
 	http.HandleFunc("/favicon.ico", faviconHandler)
+=======
+	"fmt"
+	"net/http"
+)
+
+func ConsulRouter(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "API call, %s, routed to Consul API ", r.URL.Path[1:])
+>>>>>>> Initial Commit
 
 }

@@ -1,4 +1,5 @@
 package configuration
+<<<<<<< HEAD
 
 import (
 	"os"
@@ -19,3 +20,5 @@ func LoadConfiguration() {
 	os.Setenv("HOST", host)
 
 }
+=======
+>>>>>>> Initial Commit

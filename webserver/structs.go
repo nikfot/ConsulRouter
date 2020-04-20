@@ -1,4 +1,5 @@
 package webserver
+<<<<<<< HEAD
 
 import "net/http"
 
@@ -9,3 +10,5 @@ type ServiceDiscoveryUI struct {
 	PageTitle string
 	Info      string
 }
+=======
+>>>>>>> Initial Commit

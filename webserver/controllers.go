@@ -1,4 +1,5 @@
 package webserver
+<<<<<<< HEAD
 
 import (
 	"fmt"
@@ -58,3 +59,5 @@ func uiHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, data)
 
 }
+=======
+>>>>>>> Initial Commit

@@ -1,4 +1,5 @@
 package configuration
+<<<<<<< HEAD
 
 //Config struct holds the configuration from application.yml
 type Config struct {
@@ -10,3 +11,5 @@ type Config struct {
 		Host string `yaml:"host"`
 	} `yaml:"settings"`
 }
+=======
+>>>>>>> Initial Commit

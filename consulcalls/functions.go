@@ -1,4 +1,5 @@
 package consulcalls
+<<<<<<< HEAD
 
 import (
 	"bytes"
@@ -158,3 +159,5 @@ func IsHealthy() bool {
 	}
 	return healthy
 }
+=======
+>>>>>>> Initial Commit

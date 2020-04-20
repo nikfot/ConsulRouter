@@ -1,4 +1,5 @@
 package configuration
+<<<<<<< HEAD
 
 import (
 	"fmt"
@@ -45,3 +46,5 @@ func processError(err error) {
 	fmt.Println(err)
 	os.Exit(2)
 }
+=======
+>>>>>>> Initial Commit
