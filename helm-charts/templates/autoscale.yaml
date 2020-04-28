@@ -1,0 +1,25 @@
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ template "fullname" . }}-autoscaling
+  labels:
+    app: {{ template "name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    version: {{ .Values.image.tag }}
+    SYSID: {{required "A valid .Values.global.SYSID entry required!" .Values.global.SYSID }}
+    Project: {{required "A valid .Values.global.Project entry required!" .Values.global.Project }}
+    Platform: {{ .Values.global.Platform }}
+    Product: {{ .Values.global.Product }}
+    Service: {{ .Values.global.Service }}
+    DataCenter: {{required "A valid .Values.global.DataCenter entry required!" .Values.global.datacenter }}
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: {{ template "fullname" . }}
+  minReplicas: {{ .Values.scale.minReplicas }}
+  maxReplicas: {{ .Values.scale.maxReplicas }}
+  targetCPUUtilizationPercentage: {{ .Values.scale.targetCPUUtilizationPercentage }}

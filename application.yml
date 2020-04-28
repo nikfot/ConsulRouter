@@ -1,0 +1,10 @@
+# Consul Router configuration  settings 
+router:
+  consulServers: 
+    - "http://test1.com"
+    - "http://test2.com"
+
+settings:
+  port: "8080"
+  host: "0.0.0.0"
+

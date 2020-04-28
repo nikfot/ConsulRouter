@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "fullname" . }}-configmap
+data:
+  application.yml: |-
+    ---
+    router:
+        consulServers:{{- range .Values.consulServers }}
+            - {{ .  }}{{- end }}
+    settings:
+        port: {{ .Values.router.port }}
+        host: {{ .Values.router.host }}
+

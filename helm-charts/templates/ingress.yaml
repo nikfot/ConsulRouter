@@ -1,0 +1,39 @@
+{{- if .Values.ingress.enabled -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: {{ template "name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    version: {{ .Values.image.tag }}
+  annotations:
+    virtual-server.f5.com/balance: round-robin
+    virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "{{ .Values.ingress.hosts }}/",
+          "send":     "GET /liveness HTTP/1.1\r\nHost:\r\nConnection: close\r\nUser-Agent: HealthChecker\r\n\r\n",
+          "interval": 5,
+          "timeout":  15
+        }
+      ]
+    virtual-server.f5.com/http-port: "80"
+    virtual-server.f5.com/ip: {{ required "A valid .Values.ingress.dcVip entry required!" .Values.ingress.dcVip }}
+    virtual-server.f5.com/partition: Kubernetes
+  name: {{ template "fullname" . }}
+spec:
+  rules:
+  - host: {{ .Values.ingress.hosts }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ template "fullname" $ }}
+          servicePort: {{ .Values.service.externalPort }}
+{{- if .Values.ingress.tls }}
+  tls:
+{{ toYaml .Values.ingress.tls | indent 4 }}
+{{- end -}}
+{{- end -}}

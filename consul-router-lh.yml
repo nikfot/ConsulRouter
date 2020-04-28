@@ -1,0 +1,24 @@
+# Choose an optional name for the datacenter
+global:
+
+
+consulServers: 
+  - "http://test1.com"
+  - "http://test2.com"
+
+router:
+  port: "8080"
+  host: "0.0.0.0"
+  
+image:
+  repository: nikfot/consulrouter
+  tag: v1.1
+
+ingress:
+  enabled: true
+  f5Partition: Kubernetes
+  annotations: {}
+  path: /
+  hosts: example.host
+  dcVip: 10.0.0.0
+  tls: []
